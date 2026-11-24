@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>G Gayathri — AI/ML Engineer &amp; Python Full-Stack Developer</title>
+    <link rel="icon" type="image/jpeg" href="logo.jpeg" />
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        ice: '#F8FAFC',
+                        mist: '#F1F5F9',
+                        royal: {
+                            50: '#EFF6FF',
+                            100: '#DBEAFE',
+                            500: '#3B82F6',
+                            600: '#2563EB',
+                            700: '#1D4ED8',
+                            800: '#1E40AF',
+                            900: '#1E3A8A'
+                        },
+                        ink: {
+                            950: '#09090B',
+                            900: '#111827',
+                            600: '#475569',
+                            400: '#94A3B8'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        serif: ['Instrument Serif', 'Georgia', 'serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        };
+    </script>
+    <style>
+        :root {
+            --bg-page: #FFFFFF;
+            --bg-card: #FFFFFF;
+            --bg-soft: #F1F5F9;
+            --border-subtle: #E2E8F0;
+            --text-primary: #09090B;
+            --text-secondary: #475569;
+        }
+
+        body.dark-vibe {
+            --bg-page: #050507;
+            --bg-card: #0E1117;
+            --bg-soft: #161B26;
+            --border-subtle: #232A3B;
+            --text-primary: #FFFFFF;
+            --text-secondary: #94A3B8;
+        }
+
+        body {
+            background-color: var(--bg-page);
+            color: var(--text-primary);
+            font-family: 'Inter', system-ui, sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-vibe .bg-white {
+            background-color: var(--bg-card) !important;
+        }
+
+        body.dark-vibe .bg-ice {
+            background-color: var(--bg-page) !important;
+        }
+
+        body.dark-vibe .bg-mist,
+        body.dark-vibe .bg-mist\/70 {
+            background-color: var(--bg-soft) !important;
+        }
+
+        body.dark-vibe .text-ink-900,
+        body.dark-vibe .text-ink-950 {
+            color: var(--text-primary) !important;
+        }
+
+        body.dark-vibe .text-ink-600 {
+            color: var(--text-secondary) !important;
+        }
+
+        body.dark-vibe .border-slate-200,
+        body.dark-vibe .border-slate-300 {
+            border-color: var(--border-subtle) !important;
+        }
+
+        body.dark-vibe .glass-nav {
+            background: rgba(5, 5, 7, 0.88);
+        }
+
+        .serif-display {
+            font-family: 'Instrument Serif', Georgia, serif;
+        }
+
+        @keyframes marquee-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes marquee-right {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0%);
+            }
+        }
+
+        .animate-marquee-left {
+            display: flex;
+            width: max-content;
+            animation: marquee-left 34s linear infinite;
+        }
+
+        .animate-marquee-right {
+            display: flex;
+            width: max-content;
+            animation: marquee-right 38s linear infinite;
+        }
+
+        .marquee-wrap:hover .animate-marquee-left,
+        .marquee-wrap:hover .animate-marquee-right {
+            animation-play-state: paused;
+        }
+
+        .card-surface {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+        }
+
+        .card-surface:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 36px -14px rgba(29, 78, 216, 0.18);
+            border-color: #2563EB;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .pulse-dot {
+            box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.65);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
+            }
+
+            70% {
+                box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(-1.5deg);
+            }
+
+            50% {
+                transform: translateY(-5px) rotate(1deg);
+            }
+        }
+
+        .sticker-float {
+            animation: float-slow 5s ease-in-out infinite;
+        }
+
+        .ecosystem-node.active {
+            background-color: #1D4ED8;
+            color: #FFFFFF;
+            border-color: #1D4ED8;
+            box-shadow: 0 10px 24px -8px rgba(29, 78, 216, 0.45);
+        }
+
+        .ecosystem-node.connected {
+            border-color: #2563EB;
+            background-color: #EFF6FF;
+            color: #1E3A8A;
+        }
+
+        body.dark-vibe .ecosystem-node.connected {
+            background-color: #172554;
+            color: #DBEAFE;
+        }
+
+        .gradient-ring {
+            background: linear-gradient(135deg, #1D4ED8 0%, #3B82F6 50%, #09090B 100%);
+            padding: 3px;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-royal-100 selection:text-royal-900">
+
+    <!-- Top Sticky Navigation -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-slate-200">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-2 sm:gap-3">
+            <a href="#top" class="flex items-center gap-2.5 shrink-0">
+                <img src="logo.jpeg" alt="GG Logo"
+                    class="w-9 h-9 rounded-xl object-cover border border-slate-200 shadow-sm bg-white" />
+                <div class="leading-tight">
+                    <span class="font-semibold text-ink-950 text-sm sm:text-base block">G Gayathri</span>
+                    <span class="text-[11px] text-ink-600 hidden sm:block">AI/ML &amp; Full-Stack Engineer</span>
+                </div>
+            </a>
+
+            <nav class="hidden md:flex items-center gap-5 text-sm font-medium text-ink-600">
+                <a href="#capabilities" class="hover:text-royal-700 transition-colors">Capabilities</a>
+                <a href="#ecosystem" class="hover:text-royal-700 transition-colors">Ecosystem</a>
+                <a href="#projects" class="hover:text-royal-700 transition-colors">Projects</a>
+                <a href="#credentials" class="hover:text-royal-700 transition-colors">Credentials</a>
+                <a href="#faq" class="hover:text-royal-700 transition-colors">FAQ</a>
+            </nav>
+
+            <div class="flex items-center gap-1.5 sm:gap-2.5">
+                <button id="vibeToggleBtn" type="button" title="Switch White / Midnight Black theme"
+                    class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-slate-300 bg-white hover:border-royal-600 text-xs text-ink-600 transition-colors">
+                    <i data-lucide="moon" class="w-3.5 h-3.5" id="vibeIcon"></i>
+                    <span class="hidden lg:inline" id="vibeLabel">Black Mode</span>
+                </button>
+                <button id="openCmdBtn" type="button"
+                    class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1.5 rounded-lg border border-slate-300 bg-white hover:border-royal-600 text-xs sm:text-sm text-ink-600 transition-colors">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                    <span class="hidden sm:inline">Search</span>
+                    <kbd class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-mist text-ink-600">⌘K</kbd>
+                </button>
+                <button id="openResumeBtn" type="button"
+                    class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-ink-950 text-ink-950 hover:bg-mist text-sm font-medium transition-colors">
+                    <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+                    <span>Resume</span>
+                </button>
+                <a href="#contact"
+                    class="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-lg bg-royal-700 hover:bg-royal-800 text-white text-xs sm:text-sm font-medium transition-colors">
+                    <span>Contact</span>
+                    <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="top">
+        <!-- Hero Section -->
+        <section class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 pb-14 md:pt-14 md:pb-20">
+            <div class="grid lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+                <!-- Hero Left -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="flex flex-wrap items-center gap-2.5">
+                        <div
+                            class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-sm text-xs font-medium text-ink-600">
+                            <span class="w-2 h-2 rounded-full bg-royal-600 pulse-dot"></span>
+                            <span>AI &amp; ML Engineer · B.Tech CSE 2026 · Bengaluru</span>
+                        </div>
+                        <button id="kudosBtn" type="button"
+                            class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-royal-50 border border-royal-100 text-royal-800 hover:scale-105 active:scale-95 text-xs font-medium transition-transform">
+                            <span>⚡ Vibe Check</span>
+                            <span id="kudosCount" class="font-mono font-semibold">26</span>
+                        </button>
+                    </div>
+
+                    <h1
+                        class="text-4xl sm:text-5xl lg:text-[3.4rem] font-semibold tracking-tight text-ink-950 leading-[1.08]">
+                        Engineering <span
+                            class="serif-display italic font-normal text-royal-700 text-[1.12em]">intelligent</span> ML
+                        pipelines &amp; full-stack web systems.
+                    </h1>
+
+                    <p class="text-base sm:text-lg text-ink-600 leading-relaxed max-w-2xl">
+                        Hey, I’m <strong class="text-ink-950 font-semibold">G Gayathri</strong> — a Computer Science (AI
+                        &amp; ML) grad building fast Python/FastAPI apps, explainable ML models, and automated CI/CD
+                        workflows that actually ship.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-2 text-xs font-mono text-royal-800">
+                        <span class="px-2.5 py-1 rounded-md bg-royal-50 border border-royal-100">Python</span>
+                        <span class="px-2.5 py-1 rounded-md bg-royal-50 border border-royal-100">FastAPI &amp;
+                            Flask</span>
+                        <span class="px-2.5 py-1 rounded-md bg-royal-50 border border-royal-100">Scikit-learn &amp;
+                            XGBoost</span>
+                        <span class="px-2.5 py-1 rounded-md bg-royal-50 border border-royal-100">MLOps / GitHub
+                            Actions</span>
+                        <span class="px-2.5 py-1 rounded-md bg-royal-50 border border-royal-100">SQL &amp; NLP</span>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-3 pt-1">
+                        <a href="#projects"
+                            class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-royal-700 hover:bg-royal-800 text-white font-medium text-sm transition-all hover:shadow-md">
+                            <span>Explore Projects</span>
+                            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                        <a href="https://github.com/gayathri8105" target="_blank" rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-ink-950 hover:bg-ink-900 text-white font-medium text-sm transition-colors">
+                            <i data-lucide="github" class="w-4 h-4"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/ganiga-gayathri-571790338/" target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-white border border-slate-300 hover:border-royal-600 text-ink-950 font-medium text-sm transition-colors">
+                            <i data-lucide="linkedin" class="w-4 h-4 text-royal-700"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+
+                    <!-- KPI Strip -->
+                    <div class="grid grid-cols-3 gap-4 pt-4 border-t border-slate-200">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-semibold text-ink-950 font-mono">6+</div>
+                            <div class="text-xs text-ink-600 mt-0.5">Shipped Systems</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-semibold text-royal-700 font-mono">92%</div>
+                            <div class="text-xs text-ink-600 mt-0.5">Fraud Model Accuracy</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-semibold text-ink-950 font-mono">7.63</div>
+                            <div class="text-xs text-ink-600 mt-0.5">B.Tech CGPA (2026)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right: Profile Photo Card + Live Interactive Telemetry Card -->
+                <div class="lg:col-span-5 space-y-4">
+                    <div class="card-surface rounded-2xl p-4 sm:p-5 bg-white relative">
+                        <div class="flex items-center gap-4">
+                            <div class="relative shrink-0">
+                                <div class="gradient-ring rounded-2xl w-20 h-20 sm:w-24 sm:h-24 shadow-md">
+                                    <div id="profilePhotoBox"
+                                        class="w-full h-full rounded-[13px] bg-mist overflow-hidden flex items-center justify-center relative cursor-pointer group">
+                                        <img id="profilePhotoImg" src="b988e4fd.jpeg" alt="G Gayathri profile photo"
+                                            class="w-full h-full object-cover object-top" />
+                                        <div id="profilePhotoPlaceholder"
+                                            class="hidden flex flex-col items-center justify-center text-royal-700 text-center p-1">
+                                            <i data-lucide="user-round" class="w-8 h-8 opacity-80"></i>
+                                            <span class="text-[9px] font-mono uppercase tracking-tight mt-0.5">Your
+                                                Photo</span>
+                                        </div>
+                                        <div
+                                            class="absolute inset-0 bg-ink-950/70 text-white opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-[10px] font-medium text-center px-1">
+                                            Click to change
+                                        </div>
+                                    </div>
+                                </div>
+                                <span
+                                    class="sticker-float absolute -bottom-2 -right-2 px-2 py-0.5 rounded-full bg-royal-700 text-white text-[10px] font-mono shadow">
+                                    BLR '26
+                                </span>
+                            </div>
+
+                            <div class="min-w-0 flex-1">
+                                <div class="flex items-center justify-between gap-2">
+                                    <h2 class="font-semibold text-ink-950 text-base truncate">G Gayathri</h2>
+                                    <button id="uploadPhotoBtn" type="button"
+                                        class="text-[11px] font-mono px-2.5 py-1 rounded-lg bg-royal-50 text-royal-700 hover:bg-royal-100 transition-colors shrink-0">
+                                        + Change Photo
+                                    </button>
+                                </div>
+                                <p class="text-xs text-ink-600 mt-1">Currently building: <span
+                                        class="text-royal-700 font-medium">FastAPI + AI Agents</span></p>
+                                <div class="flex flex-wrap gap-1.5 mt-2.5">
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-mist text-ink-600">☕
+                                        Chai + Python</span>
+                                    <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-ink-950 text-white">⚡
+                                        Open to Work</span>
+                                </div>
+                            </div>
+                        </div>
+                        <input id="photoFileInput" type="file" accept="image/*" class="hidden" />
+                    </div>
+
+                    <div class="card-surface rounded-2xl p-5 sm:p-6 bg-white relative overflow-hidden">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-200">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-royal-600 pulse-dot"></span>
+                                <span class="text-xs font-mono uppercase tracking-wider text-ink-600">Portfolio
+                                    Telemetry</span>
+                            </div>
+                            <span class="text-[11px] font-mono px-2 py-0.5 rounded bg-ink-950 text-white">v2026.3</span>
+                        </div>
+
+                        <div class="mt-4">
+                            <label
+                                class="text-[11px] font-mono uppercase tracking-wider text-ink-600 block mb-2">Inspect
+                                Active Architecture</label>
+                            <div class="grid grid-cols-3 gap-1.5 bg-mist p-1 rounded-xl" id="heroTabs">
+                                <button type="button" data-hero-tab="dineflow"
+                                    class="hero-tab-btn px-2 py-1.5 rounded-lg text-xs font-medium bg-white text-royal-700 shadow-sm transition-all">DineFlow</button>
+                                <button type="button" data-hero-tab="crop"
+                                    class="hero-tab-btn px-2 py-1.5 rounded-lg text-xs font-medium text-ink-600 hover:text-ink-950 transition-all">Crop
+                                    AI</button>
+                                <button type="button" data-hero-tab="fraud"
+                                    class="hero-tab-btn px-2 py-1.5 rounded-lg text-xs font-medium text-ink-600 hover:text-ink-950 transition-all">Fraud
+                                    ML</button>
+                            </div>
+                        </div>
+
+                        <div id="heroPanelBody" class="mt-4 space-y-4"></div>
+
+                        <div class="mt-5 pt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+                            <span class="text-ink-600 flex items-center gap-1.5">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-royal-600"></i>
+                                AI Concierge online
+                            </span>
+                            <button type="button" id="heroAskAiBtn"
+                                class="font-medium text-royal-700 hover:underline flex items-center gap-1">
+                                Ask about my work <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project & Tech Ticker Marquee -->
+        <div class="border-y border-slate-200 bg-ink-950 text-white py-3.5 overflow-hidden marquee-wrap">
+            <div class="animate-marquee-left items-center gap-8 text-xs font-mono uppercase tracking-wider">
+                <span>DineFlow Smart Restaurant System</span><span class="text-royal-500">•</span>
+                <span>Student Management Portal</span><span class="text-royal-500">•</span>
+                <span>Crop Suitability &amp; Yield AI</span><span class="text-royal-500">•</span>
+                <span>Credit Card Fraud Detection (280K+ txns)</span><span class="text-royal-500">•</span>
+                <span>MLOps CI/CD Pipeline</span><span class="text-royal-500">•</span>
+                <span>Twitter Sentiment NLP (50K+ tweets)</span><span class="text-royal-500">•</span>
+                <span>FastAPI &amp; Flask</span><span class="text-royal-500">•</span>
+                <span>SHAP &amp; LIME Explainability</span><span class="text-royal-500">•</span>
+                <span>DineFlow Smart Restaurant System</span><span class="text-royal-500">•</span>
+                <span>Student Management Portal</span><span class="text-royal-500">•</span>
+                <span>Crop Suitability &amp; Yield AI</span><span class="text-royal-500">•</span>
+                <span>Credit Card Fraud Detection (280K+ txns)</span><span class="text-royal-500">•</span>
+                <span>MLOps CI/CD Pipeline</span><span class="text-royal-500">•</span>
+                <span>Twitter Sentiment NLP (50K+ tweets)</span><span class="text-royal-500">•</span>
+                <span>FastAPI &amp; Flask</span><span class="text-royal-500">•</span>
+                <span>SHAP &amp; LIME Explainability</span><span class="text-royal-500">•</span>
+            </div>
+        </div>
+
+        <!-- What I Build / Capabilities Bento -->
+        <section id="capabilities" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="max-w-2xl mb-10">
+                <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">What I Build</span>
+                <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-950 mt-2">
+                    A complete engineering toolkit from <span
+                        class="serif-display italic font-normal text-royal-700">model to production</span>.
+                </h2>
+                <p class="text-ink-600 mt-3 text-sm sm:text-base">
+                    Bridging predictive machine learning, explainable AI, and clean full-stack web architecture.
+                </p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-royal-50 text-royal-700 flex items-center justify-center mb-4">
+                        <i data-lucide="brain-circuit" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">Applied Machine Learning</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Ensemble modeling with Random Forest, Gradient Boosting, XGBoost, and stacking meta-learners
+                        with rigorous feature engineering and threshold tuning.
+                    </p>
+                </div>
+
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-ink-950 text-white flex items-center justify-center mb-4">
+                        <i data-lucide="eye" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">Explainable AI &amp; NLP</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Transparent model decisions using SHAP &amp; LIME frameworks alongside NLP text pipelines with
+                        tokenization, TF-IDF vectorization, and noise handling.
+                    </p>
+                </div>
+
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-royal-50 text-royal-700 flex items-center justify-center mb-4">
+                        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">Full-Stack Web Apps</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Responsive, modular applications built with Python, FastAPI, Flask, Jinja2 templating, HTML5,
+                        CSS3, and Tailwind CSS for real-world workflows.
+                    </p>
+                </div>
+
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-ink-950 text-white flex items-center justify-center mb-4">
+                        <i data-lucide="git-branch" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">MLOps &amp; CI/CD Automation</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Reproducible training, automated data validation checks, and GitHub Actions CI/CD deployment
+                        workflows that cut manual overhead by 40%.
+                    </p>
+                </div>
+
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-royal-50 text-royal-700 flex items-center justify-center mb-4">
+                        <i data-lucide="database" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">SQL &amp; API Architecture</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Structured relational database design, Pydantic data validation, RESTful GET/POST routing, and
+                        clean OOP patterns for backend reliability.
+                    </p>
+                </div>
+
+                <div class="card-surface rounded-2xl p-6">
+                    <div class="w-10 h-10 rounded-xl bg-ink-950 text-white flex items-center justify-center mb-4">
+                        <i data-lucide="cpu" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="font-semibold text-ink-950 text-lg">Core CS Foundations</h3>
+                    <p class="text-sm text-ink-600 mt-2 leading-relaxed">
+                        Strong grounding in Data Structures &amp; Algorithms (DSA), Object-Oriented Programming,
+                        Computer Networks, Python, Java, and C.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dual-Row Tech Stack Marquee ("Built With") -->
+        <section class="py-12 bg-ice border-y border-slate-200">
+            <div
+                class="max-w-6xl mx-auto px-4 sm:px-6 mb-6 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Built
+                        With</span>
+                    <h2 class="text-2xl sm:text-3xl font-semibold text-ink-950 mt-1">The tools &amp; frameworks I
+                        master.</h2>
+                </div>
+                <p class="text-xs text-ink-600 font-mono">Hover to pause</p>
+            </div>
+
+            <div class="space-y-3 overflow-hidden marquee-wrap">
+                <div class="animate-marquee-left gap-3" id="stackRow1"></div>
+                <div class="animate-marquee-right gap-3" id="stackRow2"></div>
+            </div>
+        </section>
+
+        <!-- Interactive Engineering Ecosystem Map -->
+        <section id="ecosystem" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 space-y-4">
+                    <span
+                        class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Ecosystem</span>
+                    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-950">
+                        One connected engineering <span
+                            class="serif-display italic font-normal text-royal-700">ecosystem</span>.
+                    </h2>
+                    <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                        Select or hover any discipline node to see how it connects to my shipped projects, tools, and
+                        measurable outcomes.
+                    </p>
+
+                    <div id="ecosystemDetail" class="card-surface rounded-2xl p-5 bg-white mt-4"></div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="card-surface rounded-2xl p-6 bg-white">
+                        <div
+                            class="text-xs font-mono uppercase tracking-wider text-ink-600 mb-4 flex items-center justify-between">
+                            <span>Interactive Discipline Nodes</span>
+                            <span class="text-royal-700">Click or hover a node</span>
+                        </div>
+                        <div id="ecosystemGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-3"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Selected Work / Projects Section -->
+        <section id="projects" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20 border-t border-slate-200">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Selected
+                        Work</span>
+                    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-950 mt-2">
+                        Projects built for <span class="serif-display italic font-normal text-royal-700">real-world
+                            impact</span>.
+                    </h2>
+                </div>
+
+                <div class="flex flex-wrap gap-2" id="projectFilters">
+                    <button type="button" data-filter="all"
+                        class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-royal-700 text-white transition-colors">All
+                        (6)</button>
+                    <button type="button" data-filter="fullstack"
+                        class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-300 text-ink-600 hover:border-royal-600 transition-colors">Full-Stack
+                        Web</button>
+                    <button type="button" data-filter="ml"
+                        class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-300 text-ink-600 hover:border-royal-600 transition-colors">AI
+                        &amp; ML</button>
+                    <button type="button" data-filter="mlops"
+                        class="filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-300 text-ink-600 hover:border-royal-600 transition-colors">MLOps
+                        &amp; NLP</button>
+                </div>
+            </div>
+
+            <div id="projectsGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        </section>
+
+        <!-- 4-Step Engineering Process (Black & Royal Blue Contrast Band) -->
+        <section class="bg-ink-950 text-white py-16 md:py-20">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6">
+                <div class="max-w-2xl mb-12">
+                    <span class="text-xs font-mono uppercase tracking-widest text-royal-500">Engineering Process</span>
+                    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight mt-2">
+                        Four movements. <span class="serif-display italic font-normal text-royal-500">Compounding
+                            craft.</span>
+                    </h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div
+                        class="rounded-2xl p-6 bg-white/5 border border-white/10 hover:border-royal-500 transition-colors">
+                        <span class="font-mono text-xs text-royal-500">01</span>
+                        <h3 class="font-semibold text-lg mt-2">Discover &amp; Audit</h3>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Clean raw datasets, handle class imbalances and labeling noise, and map user &amp;
+                            operational requirements.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-2xl p-6 bg-white/5 border border-white/10 hover:border-royal-500 transition-colors">
+                        <span class="font-mono text-xs text-royal-500">02</span>
+                        <h3 class="font-semibold text-lg mt-2">Model &amp; Architect</h3>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Design modular OOP schemas, RESTful APIs, and ensemble ML architectures tuned for
+                            reliability and explainability.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-2xl p-6 bg-white/5 border border-white/10 hover:border-royal-500 transition-colors">
+                        <span class="font-mono text-xs text-royal-500">03</span>
+                        <h3 class="font-semibold text-lg mt-2">Engineer Full-Stack</h3>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Build interactive FastAPI/Flask interfaces with Jinja2, Tailwind CSS, Pydantic validation,
+                            and SQL persistence.
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-2xl p-6 bg-white/5 border border-white/10 hover:border-royal-500 transition-colors">
+                        <span class="font-mono text-xs text-royal-500">04</span>
+                        <h3 class="font-semibold text-lg mt-2">Automate &amp; Ship</h3>
+                        <p class="text-sm text-slate-300 mt-2 leading-relaxed">
+                            Wire GitHub Actions CI/CD pipelines and automated data validation checks for consistent
+                            production inference.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education, Training, Certifications & Graduation Moments -->
+        <section id="credentials" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20">
+            <div class="mb-10">
+                <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Credentials &amp;
+                    Training</span>
+                <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-950 mt-2">
+                    Academic foundation &amp; <span class="serif-display italic font-normal text-royal-700">continuous
+                        training</span>.
+                </h2>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-6">
+                <div class="lg:col-span-7 space-y-5">
+                    <div class="card-surface rounded-2xl p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span
+                                class="text-xs font-mono px-2.5 py-1 rounded-md bg-royal-50 text-royal-700 font-medium">Ongoing
+                                (2026)</span>
+                            <span class="text-xs text-ink-600">Online</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-ink-950 mt-3">Python Full Stack Development Program</h3>
+                        <p class="text-sm font-medium text-royal-700">Innomatics Research Labs</p>
+                        <ul class="mt-3 space-y-1.5 text-sm text-ink-600 list-disc list-inside">
+                            <li>Building full-stack web applications using Python, FastAPI, Jinja2 templating, HTML5,
+                                CSS3, and SQL databases.</li>
+                            <li>Implementing backend routes (GET/POST), form handling, Pydantic data validation, and OOP
+                                for modular integration.</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-surface rounded-2xl p-6">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span
+                                class="text-xs font-mono px-2.5 py-1 rounded-md bg-ink-950 text-white font-medium">Graduated:
+                                2026 · CGPA: 7.63</span>
+                            <span class="text-xs text-ink-600">Bengaluru, India</span>
+                        </div>
+                        <h3 class="text-lg font-semibold text-ink-950 mt-3">B.Tech in Computer Science &amp; Engineering
+                            (AI &amp; ML)</h3>
+                        <p class="text-sm font-medium text-royal-700">Dayananda Sagar University, Bengaluru</p>
+                        <p class="text-sm text-ink-600 mt-2">
+                            Class XII: <strong class="text-ink-950">85.5%</strong> · Class X: <strong
+                                class="text-ink-950">80.8%</strong>
+                        </p>
+                        <div class="mt-3 flex flex-wrap gap-1.5">
+                            <span
+                                class="text-xs px-2.5 py-1 rounded-md bg-ice border border-slate-200 text-ink-600">Data
+                                Structures &amp; Algorithms</span>
+                            <span
+                                class="text-xs px-2.5 py-1 rounded-md bg-ice border border-slate-200 text-ink-600">Computer
+                                Networks</span>
+                            <span
+                                class="text-xs px-2.5 py-1 rounded-md bg-ice border border-slate-200 text-ink-600">Machine
+                                Learning</span>
+                            <span
+                                class="text-xs px-2.5 py-1 rounded-md bg-ice border border-slate-200 text-ink-600">Data
+                                Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 space-y-5">
+                    <div class="card-surface rounded-2xl p-6">
+                        <h3 class="font-semibold text-ink-950 text-lg mb-4 flex items-center gap-2">
+                            <i data-lucide="award" class="w-5 h-5 text-royal-700"></i>
+                            Certifications
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="p-3.5 rounded-xl bg-ice border border-slate-200">
+                                <div class="text-xs font-mono text-royal-700 uppercase">Infosys Springboard</div>
+                                <div class="text-sm font-medium text-ink-950 mt-1">AI &amp; Machine Learning Foundation
+                                </div>
+                                <div class="text-sm text-ink-600">Java Programming</div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-ice border border-slate-200">
+                                <div class="text-xs font-mono text-royal-700 uppercase">Coursera</div>
+                                <div class="text-sm font-medium text-ink-950 mt-1">Ethics for Artificial Intelligence
+                                </div>
+                            </div>
+                            <div class="p-3.5 rounded-xl bg-ice border border-slate-200">
+                                <div class="text-xs font-mono text-royal-700 uppercase">Udemy</div>
+                                <div class="text-sm font-medium text-ink-950 mt-1">Generative AI, LLM Applications, AI
+                                    Agents &amp; Cursor AI</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graduation & Campus Moments Bento -->
+                    <div class="card-surface rounded-2xl p-5">
+                        <div class="flex items-center justify-between mb-3">
+                            <h3 class="font-semibold text-ink-950 text-sm flex items-center gap-2">
+                                <i data-lucide="camera" class="w-4 h-4 text-royal-700"></i>
+                                Graduation &amp; Campus Moments
+                            </h3>
+                            <span class="text-[11px] font-mono text-royal-700">DSU &rsquo;26</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <figure
+                                class="group relative rounded-xl overflow-hidden border border-slate-200 aspect-[3/4] bg-mist">
+                                <img src="image.png" alt="G Gayathri graduation gown at Dayananda Sagar University"
+                                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+                                <figcaption
+                                    class="absolute bottom-2 left-2 right-2 px-2 py-1 rounded-lg bg-ink-950/80 backdrop-blur-sm text-white text-[10px] font-mono text-center">
+                                    Convocation &rsquo;26
+                                </figcaption>
+                            </figure>
+                            <figure
+                                class="group relative rounded-xl overflow-hidden border border-slate-200 aspect-[3/4] bg-mist">
+                                <img src="image copy.png" alt="G Gayathri on campus at Dayananda Sagar University"
+                                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300" />
+                                <figcaption
+                                    class="absolute bottom-2 left-2 right-2 px-2 py-1 rounded-lg bg-ink-950/80 backdrop-blur-sm text-white text-[10px] font-mono text-center">
+                                    Campus Day &rsquo;26
+                                </figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Accordion -->
+        <section id="faq" class="max-w-4xl mx-auto px-4 sm:px-6 py-14 border-t border-slate-200">
+            <div class="text-center mb-10">
+                <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Frequently
+                    Asked</span>
+                <h2 class="text-3xl font-semibold text-ink-950 mt-2">Working with me.</h2>
+            </div>
+
+            <div class="space-y-3" id="faqList"></div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-20 border-t border-slate-200">
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 space-y-5">
+                    <span class="text-xs font-mono uppercase tracking-widest text-royal-700 font-medium">Get in
+                        Touch</span>
+                    <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight text-ink-950">
+                        Let’s build something <span
+                            class="serif-display italic font-normal text-royal-700">impactful</span>.
+                    </h2>
+                    <p class="text-sm sm:text-base text-ink-600 leading-relaxed">
+                        Open to AI/ML Engineer, Python Full-Stack Developer, and Software Engineering roles in Bengaluru
+                        or remote.
+                    </p>
+
+                    <div class="space-y-3 pt-2">
+                        <div
+                            class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200">
+                            <div class="flex items-center gap-3 min-w-0">
+                                <i data-lucide="mail" class="w-4 h-4 text-royal-700 shrink-0"></i>
+                                <span class="text-sm text-ink-950 truncate">gayathriganiga68@gmail.com</span>
+                            </div>
+                            <button type="button" id="copyEmailBtn"
+                                class="text-xs font-mono px-2.5 py-1 rounded bg-mist hover:bg-royal-50 text-royal-800 shrink-0 transition-colors">Copy</button>
+                        </div>
+
+                        <div
+                            class="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200">
+                            <div class="flex items-center gap-3">
+                                <i data-lucide="phone" class="w-4 h-4 text-royal-700 shrink-0"></i>
+                                <span class="text-sm text-ink-950">+91 8105817096</span>
+                            </div>
+                            <button type="button" id="copyPhoneBtn"
+                                class="text-xs font-mono px-2.5 py-1 rounded bg-mist hover:bg-royal-50 text-royal-800 shrink-0 transition-colors">Copy</button>
+                        </div>
+
+                        <div class="flex items-center gap-3 pt-1">
+                            <a href="https://github.com/gayathri8105" target="_blank" rel="noopener noreferrer"
+                                class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-ink-950 hover:bg-ink-900 text-white text-sm font-medium transition-colors">
+                                <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                            </a>
+                            <a href="https://www.linkedin.com/in/ganiga-gayathri-571790338/" target="_blank"
+                                rel="noopener noreferrer"
+                                class="flex-1 inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-white border border-slate-300 hover:border-royal-600 text-sm font-medium text-ink-950 transition-colors">
+                                <i data-lucide="linkedin" class="w-4 h-4 text-royal-700"></i> LinkedIn
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <form id="contactForm" class="card-surface rounded-2xl p-6 sm:p-7 space-y-4">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="contactName" class="block text-xs font-medium text-ink-600 mb-1.5">Your
+                                    Name</label>
+                                <input id="contactName" type="text" required placeholder="Recruiter / Hiring Manager"
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-ice focus:bg-white focus:outline-none focus:border-royal-600 text-sm" />
+                            </div>
+                            <div>
+                                <label for="contactEmail" class="block text-xs font-medium text-ink-600 mb-1.5">Email
+                                    Address</label>
+                                <input id="contactEmail" type="email" required placeholder="you@company.com"
+                                    class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-ice focus:bg-white focus:outline-none focus:border-royal-600 text-sm" />
+                            </div>
+                        </div>
+                        <div>
+                            <label for="contactTopic" class="block text-xs font-medium text-ink-600 mb-1.5">Opportunity
+                                / Topic</label>
+                            <select id="contactTopic"
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-ice focus:bg-white focus:outline-none focus:border-royal-600 text-sm">
+                                <option>AI / ML Engineer Role</option>
+                                <option>Python Full-Stack Developer Role</option>
+                                <option>Project Collaboration</option>
+                                <option>General Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="contactMessage"
+                                class="block text-xs font-medium text-ink-600 mb-1.5">Message</label>
+                            <textarea id="contactMessage" rows="4" required
+                                placeholder="Share role details, interview availability, or project ideas..."
+                                class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-ice focus:bg-white focus:outline-none focus:border-royal-600 text-sm"></textarea>
+                        </div>
+                        <div class="flex items-center justify-between gap-4 pt-1">
+                            <span class="text-xs text-ink-600">Instant confirmation + confetti 🎉</span>
+                            <button type="submit"
+                                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-royal-700 hover:bg-royal-800 text-white text-sm font-medium transition-colors">
+                                <span>Send Message</span>
+                                <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 bg-white pb-24 sm:pb-12 pt-10">
+        <div
+            class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-600">
+            <div>
+                <span class="font-semibold text-ink-950">G Gayathri</span> · Bengaluru, Karnataka, India · © 2026
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="https://github.com/gayathri8105" target="_blank" rel="noopener noreferrer"
+                    class="hover:text-royal-700">GitHub</a>
+                <a href="https://www.linkedin.com/in/ganiga-gayathri-571790338/" target="_blank"
+                    rel="noopener noreferrer" class="hover:text-royal-700">LinkedIn</a>
+                <a href="mailto:gayathriganiga68@gmail.com" class="hover:text-royal-700">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Quick-Nav Dock -->
+    <div
+        class="fixed bottom-4 left-1/2 -translate-x-1/2 z-30 bg-white/90 backdrop-blur-md border border-slate-300 shadow-lg rounded-full px-2 py-1.5 flex items-center gap-1 text-xs font-medium">
+        <a href="#top" class="px-3 py-1.5 rounded-full hover:bg-mist text-ink-950 transition-colors">Home</a>
+        <a href="#capabilities" class="px-3 py-1.5 rounded-full hover:bg-mist text-ink-600 transition-colors">Skills</a>
+        <a href="#projects" class="px-3 py-1.5 rounded-full hover:bg-mist text-ink-600 transition-colors">Work</a>
+        <a href="#credentials" class="px-3 py-1.5 rounded-full hover:bg-mist text-ink-600 transition-colors">Resume</a>
+        <a href="#contact" class="px-3 py-1.5 rounded-full bg-royal-700 text-white transition-colors">Talk</a>
+    </div>
+
+    <!-- Floating AI Concierge Button & Drawer -->
+    <button id="aiToggleBtn" type="button"
+        class="fixed bottom-4 right-4 z-40 inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-ink-950 hover:bg-royal-800 text-white shadow-xl text-xs sm:text-sm font-medium transition-all hover:scale-105">
+        <span class="w-2 h-2 rounded-full bg-royal-500 pulse-dot"></span>
+        <span>Ask Gayathri AI</span>
+    </button>
+
+    <div id="aiDrawer"
+        class="hidden fixed bottom-16 right-4 z-50 w-[calc(100vw-2rem)] max-w-sm bg-white border border-slate-300 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[70vh]">
+        <div class="bg-ink-950 text-white px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-royal-500"></span>
+                <div>
+                    <div class="text-sm font-semibold">Portfolio AI Concierge</div>
+                    <div class="text-[11px] text-royal-100">Grounded in Gayathri's resume &amp; projects</div>
+                </div>
+            </div>
+            <button id="aiCloseBtn" type="button"
+                class="p-1 rounded-lg hover:bg-white/10 text-white/80 hover:text-white">
+                <i data-lucide="x" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <div id="aiMessages" class="p-4 space-y-3 overflow-y-auto flex-1 bg-ice text-sm">
+            <div class="bg-white border border-slate-200 rounded-xl p-3 text-ink-950">
+                Hey! Ask me about Gayathri’s projects (like <strong>DineFlow</strong>, <strong>Student Management
+                    System</strong>, or <strong>Crop Suitability AI</strong>), her tech stack, or how to reach her.
+            </div>
+        </div>
+
+        <div class="px-3 py-2 bg-white border-t border-slate-200 flex flex-wrap gap-1.5">
+            <button type="button" data-ai-prompt="Tell me about DineFlow"
+                class="ai-chip text-[11px] px-2.5 py-1 rounded-full bg-mist hover:bg-royal-50 text-royal-800 transition-colors">DineFlow</button>
+            <button type="button" data-ai-prompt="What is her ML experience?"
+                class="ai-chip text-[11px] px-2.5 py-1 rounded-full bg-mist hover:bg-royal-50 text-royal-800 transition-colors">ML
+                Projects</button>
+            <button type="button" data-ai-prompt="Student Management System"
+                class="ai-chip text-[11px] px-2.5 py-1 rounded-full bg-mist hover:bg-royal-50 text-royal-800 transition-colors">Student
+                Mgmt</button>
+            <button type="button" data-ai-prompt="Education and contact"
+                class="ai-chip text-[11px] px-2.5 py-1 rounded-full bg-mist hover:bg-royal-50 text-royal-800 transition-colors">Contact</button>
+        </div>
+
+        <form id="aiForm" class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+            <input id="aiInput" type="text" placeholder="Ask a question..."
+                class="flex-1 px-3 py-2 rounded-xl bg-ice border border-slate-300 text-xs sm:text-sm focus:outline-none focus:border-royal-600" />
+            <button type="submit" class="p-2 rounded-xl bg-royal-700 hover:bg-royal-800 text-white">
+                <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+        </form>
+    </div>
+
+    <!-- Command Palette Modal (⌘K) -->
+    <div id="cmdModal"
+        class="hidden fixed inset-0 z-50 bg-ink-950/50 backdrop-blur-sm flex items-start justify-center pt-20 px-4">
+        <div class="w-full max-w-lg bg-white rounded-2xl border border-slate-300 shadow-2xl overflow-hidden">
+            <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+                <i data-lucide="search" class="w-4 h-4 text-ink-400"></i>
+                <input id="cmdInput" type="text" placeholder="Search projects, skills, or jump to section..."
+                    class="flex-1 text-sm focus:outline-none text-ink-950 bg-transparent" />
+                <button id="cmdCloseBtn" type="button"
+                    class="text-[11px] font-mono px-2 py-0.5 rounded bg-mist text-ink-600">ESC</button>
+            </div>
+            <div id="cmdResults" class="max-h-72 overflow-y-auto p-2 space-y-1"></div>
+        </div>
+    </div>
+
+    <!-- Project Case Study Modal -->
+    <div id="projectModal"
+        class="hidden fixed inset-0 z-50 bg-ink-950/55 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="w-full max-w-2xl bg-white rounded-2xl border border-slate-300 shadow-2xl overflow-hidden max-h-[85vh] flex flex-col">
+            <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+                <span id="modalCategory"
+                    class="text-xs font-mono uppercase tracking-wider text-royal-700 font-medium"></span>
+                <button id="closeProjectModal" type="button" class="p-1.5 rounded-lg hover:bg-mist text-ink-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="p-6 overflow-y-auto space-y-4"></div>
+        </div>
+    </div>
+
+    <!-- Resume Quick-View Modal -->
+    <div id="resumeModal"
+        class="hidden fixed inset-0 z-50 bg-ink-950/55 backdrop-blur-sm flex items-center justify-center p-4">
+        <div
+            class="w-full max-w-3xl bg-white rounded-2xl border border-slate-300 shadow-2xl overflow-hidden max-h-[88vh] flex flex-col">
+            <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between bg-ice">
+                <div>
+                    <h3 class="font-semibold text-ink-950">G Gayathri — Technical Resume</h3>
+                    <p class="text-xs text-ink-600">Bengaluru, Karnataka, India · +91 8105817096 ·
+                        gayathriganiga68@gmail.com</p>
+                </div>
+                <button id="closeResumeModal" type="button" class="p-1.5 rounded-lg hover:bg-mist text-ink-600">
+                    <i data-lucide="x" class="w-4 h-4"></i>
+                </button>
+            </div>
+            <div class="p-6 overflow-y-auto space-y-5 text-sm text-ink-600">
+                <div>
+                    <h4 class="font-mono text-xs uppercase tracking-wider text-royal-700 font-semibold mb-1.5">
+                        Professional Summary</h4>
+                    <p class="leading-relaxed">Results-driven B.Tech graduate in Computer Science &amp; Engineering (AI
+                        &amp; ML) with hands-on training in Python Full-Stack Web Development, Machine Learning
+                        engineering, and MLOps automation. Proficient in Python, FastAPI, Flask, SQL, and end-to-end
+                        data pipelines.</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-xs uppercase tracking-wider text-royal-700 font-semibold mb-1.5">Technical
+                        Skills</h4>
+                    <p><strong>Languages:</strong> Python, Java, C, SQL, HTML5, CSS3</p>
+                    <p><strong>Web &amp; Frameworks:</strong> FastAPI, Flask, Jinja2, Tailwind CSS</p>
+                    <p><strong>ML &amp; Data Science:</strong> Scikit-learn, XGBoost, Pandas, NumPy, NLP, SHAP/LIME,
+                        Feature Engineering</p>
+                    <p><strong>Tools &amp; Core CS:</strong> SQL, GitHub, GitHub Actions, Jupyter Notebook, Google
+                        Colab, DSA, OOP, Computer Networks</p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-xs uppercase tracking-wider text-royal-700 font-semibold mb-1.5">Education
+                        &amp; Training</h4>
+                    <p><strong>Python Full Stack Development Program</strong> — Innomatics Research Labs (Ongoing, 2026)
+                    </p>
+                    <p><strong>B.Tech in CSE (AI &amp; ML)</strong> — Dayananda Sagar University, Bengaluru (Graduated
+                        2026 · CGPA: 7.63)</p>
+                </div>
+                <div class="flex flex-wrap gap-3 pt-2">
+                    <a href="https://github.com/gayathri8105" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-ink-950 text-white text-xs font-medium">
+                        <i data-lucide="github" class="w-3.5 h-3.5"></i> GitHub Profile
+                    </a>
+                    <a href="https://www.linkedin.com/in/ganiga-gayathri-571790338/" target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg border border-slate-300 text-ink-950 text-xs font-medium">
+                        <i data-lucide="linkedin" class="w-3.5 h-3.5 text-royal-700"></i> LinkedIn Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast"
+        class="hidden fixed top-20 right-4 z-50 px-4 py-2.5 rounded-xl bg-ink-950 text-white text-xs sm:text-sm shadow-lg flex items-center gap-2 border border-royal-700">
+        <i data-lucide="check-circle-2" class="w-4 h-4 text-royal-500"></i>
+        <span id="toastMsg">Copied!</span>
+    </div>
+
+    <script>
+        const HERO_TELEMETRY = {
+            dineflow: {
+                title: 'DineFlow — Smart Restaurant Ordering & Management',
+                tag: 'Full-Stack Web',
+                metricLabel: 'Core Workflow',
+                metricValue: 'Order → Kitchen → Billing',
+                summary: 'Digitizes table ordering, live menu management, and kitchen/order status tracking with clean backend routing and SQL persistence.',
+                stack: ['Python', 'FastAPI / Flask', 'SQL', 'HTML5 / Tailwind']
+            },
+            crop: {
+                title: 'AI-Based Crop Suitability & Yield Prediction',
+                tag: 'Explainable ML',
+                metricLabel: 'Reliability Lift',
+                metricValue: '+20% via Stacking',
+                summary: 'Combines Random Forest, Gradient Boosting & XGBoost with SHAP/LIME explainability inside an interactive Flask dashboard.',
+                stack: ['Python', 'XGBoost', 'SHAP / LIME', 'Flask']
+            },
+            fraud: {
+                title: 'Credit Card Fraud Detection Pipeline',
+                tag: 'Anomaly Detection',
+                metricLabel: 'Dataset & Accuracy',
+                metricValue: '280K+ txns · 92%',
+                summary: 'Automated cleaning, scaling, and class-imbalance handling with threshold tuning that cut false positives by 18%.',
+                stack: ['Scikit-learn', 'Pandas', 'NumPy', 'Python']
+            }
+        };
+
+        const STACK_ROW_1 = [
+            'Python', 'FastAPI', 'Flask', 'Jinja2', 'Tailwind CSS', 'HTML5', 'CSS3', 'Java', 'C', 'SQL'
+        ];
+        const STACK_ROW_2 = [
+            'Scikit-learn', 'XGBoost', 'Pandas', 'NumPy', 'SHAP / LIME', 'NLP & TF-IDF', 'GitHub Actions', 'Pydantic', 'Jupyter Notebook', 'Google Colab'
+        ];
+
+        const ECOSYSTEM_NODES = [
+            { id: 'ml', label: 'Applied ML', related: ['explainable', 'mlops', 'data'], projects: ['Crop Suitability & Yield Prediction', 'Credit Card Fraud Detection'], desc: 'Ensemble modeling (Random Forest, Gradient Boosting, XGBoost) and anomaly detection with class-imbalance handling.' },
+            { id: 'fullstack', label: 'Full-Stack Web', related: ['api', 'data', 'cs'], projects: ['DineFlow – Smart Restaurant System', 'Student Management System'], desc: 'End-to-end web apps using Python, FastAPI, Flask, Jinja2 templating, HTML5, CSS3, and Tailwind CSS.' },
+            { id: 'mlops', label: 'MLOps & CI/CD', related: ['ml', 'api'], projects: ['Crop Yield Prediction with MLOps Automation'], desc: 'Automated model training, environmental data validation, and GitHub Actions deployment cutting manual overhead by 40%.' },
+            { id: 'explainable', label: 'Explainable AI', related: ['ml', 'nlp'], projects: ['AI-Based Crop Suitability & Yield Prediction'], desc: 'SHAP and LIME interpretability layers so users understand the exact soil & weather drivers behind predictions.' },
+            { id: 'nlp', label: 'NLP & Text AI', related: ['ml', 'data'], projects: ['Twitter Sentiment Analysis Engine'], desc: 'Tokenization, stop-word removal, TF-IDF vectorization, and noise-resilient classification across 50,000+ tweets.' },
+            { id: 'api', label: 'API & Validation', related: ['fullstack', 'mlops', 'data'], projects: ['DineFlow – Smart Restaurant System', 'Innomatics Full-Stack Labs'], desc: 'RESTful GET/POST backend routes, form handling, and strict Pydantic schema validation.' },
+            { id: 'data', label: 'SQL & Data', related: ['fullstack', 'ml', 'nlp'], projects: ['Student Management System', 'Credit Card Fraud Detection'], desc: 'Relational SQL schema design, Pandas/NumPy preprocessing, and reproducible feature engineering pipelines.' },
+            { id: 'cs', label: 'Core CS & OOP', related: ['fullstack', 'api'], projects: ['Student Management System', 'DineFlow – Smart Restaurant System'], desc: 'Object-Oriented Programming, Data Structures & Algorithms, Computer Networks, Java, and C.' }
+        ];
+
+        const PROJECTS = [
+            {
+                id: 'dineflow', category: 'fullstack', categoryLabel: 'Full-Stack Web', year: '2026',
+                title: 'DineFlow – Smart Restaurant Ordering & Management System',
+                summary: 'A smart digital restaurant platform streamlining customer table ordering, live menu management, and kitchen/order status workflows.',
+                impact: 'End-to-end order lifecycle & management dashboard',
+                stack: ['Python', 'FastAPI / Flask', 'SQL', 'HTML5', 'Tailwind CSS'],
+                highlights: [
+                    'Built a unified ordering and management interface connecting diners, menu items, and kitchen order queues.',
+                    'Implemented structured backend routes (GET/POST), form validation, and relational SQL tracking for orders and tables.',
+                    'Designed a clean, responsive UI for fast menu browsing, cart updates, and real-time order status management.'
+                ]
+            },
+            {
+                id: 'student-mgmt', category: 'fullstack', categoryLabel: 'Full-Stack Web', year: '2026',
+                title: 'Student Management System',
+                summary: 'A modular academic administration web application for managing student profiles, course enrollments, and academic records.',
+                impact: 'Structured CRUD workflows & SQL persistence',
+                stack: ['Python', 'SQL', 'OOP', 'Jinja2', 'HTML5 / CSS3'],
+                highlights: [
+                    'Engineered full CRUD operations (Create, Read, Update, Delete) for student records, attendance, and academic details.',
+                    'Applied Object-Oriented Programming (OOP) principles for clean separation between database models and web routes.',
+                    'Integrated search/filter capabilities and server-side validation for reliable data integrity.'
+                ]
+            },
+            {
+                id: 'crop-ai', category: 'ml', categoryLabel: 'AI & ML', year: '2025',
+                title: 'AI-Based Crop Suitability & Yield Prediction System',
+                summary: 'End-to-end ML decision support system combining multi-year soil and meteorological data with SHAP/LIME explainability.',
+                impact: '+20% prediction reliability via stacking meta-learner',
+                stack: ['Python', 'Scikit-learn', 'XGBoost', 'Flask', 'SHAP/LIME', 'Pandas'],
+                highlights: [
+                    'Trained Random Forest, Gradient Boosting, and XGBoost models combined via a stacking meta-learner (+20% reliability).',
+                    'Integrated SHAP and LIME explainability frameworks to surface feature-level reasoning for every recommendation.',
+                    'Deployed an interactive Flask web dashboard for real-time crop suitability and yield predictions.'
+                ]
+            },
+            {
+                id: 'fraud-detection', category: 'ml', categoryLabel: 'AI & ML', year: '2025',
+                title: 'Credit Card Fraud Detection Pipeline',
+                summary: 'Reproducible anomaly detection pipeline processing 280,000+ financial transactions with automated class-imbalance handling.',
+                impact: '92% accuracy · 18% fewer false positives',
+                stack: ['Python', 'Scikit-learn', 'Pandas', 'NumPy'],
+                highlights: [
+                    'Processed 280,000+ financial transactions with automated data cleaning, feature scaling, and class-imbalance handling.',
+                    'Optimized feature selection and classification thresholds to reach 92% accuracy.',
+                    'Reduced false positives by 18% to minimize unnecessary transaction blocks.'
+                ]
+            },
+            {
+                id: 'crop-mlops', category: 'mlops', categoryLabel: 'MLOps & CI/CD', year: '2025',
+                title: 'Crop Yield Prediction with MLOps Automation',
+                summary: 'Automated model training, validation, and deployment pipelines powered by GitHub Actions CI/CD workflows.',
+                impact: '40% reduction in manual deployment overhead',
+                stack: ['Python', 'GitHub Actions', 'CI/CD', 'Machine Learning'],
+                highlights: [
+                    'Automated end-to-end model training, validation, and deployment using GitHub Actions CI/CD workflows.',
+                    'Reduced manual deployment overhead by 40% across model iterations.',
+                    'Implemented automated data validation checks on environmental and rainfall variables for consistent production inference.'
+                ]
+            },
+            {
+                id: 'twitter-nlp', category: 'mlops', categoryLabel: 'NLP & ML', year: '2025',
+                title: 'Twitter Sentiment Analysis Engine (NLP)',
+                summary: 'Supervised NLP text classification pipeline processing 50,000+ tweets with TF-IDF vectorization and hyperparameter tuning.',
+                impact: '85% classification accuracy across 50K+ tweets',
+                stack: ['Python', 'NLP', 'Scikit-learn', 'TF-IDF'],
+                highlights: [
+                    'Built a text preprocessing pipeline covering tokenization, stop-word removal, and TF-IDF vectorization.',
+                    'Resolved dataset labeling noise and tuned supervised ML classifier hyperparameters.',
+                    'Achieved 85% classification accuracy across 50,000+ social media posts.'
+                ]
+            }
+        ];
+
+        const FAQS = [
+            { q: 'What roles is Gayathri currently looking for?', a: 'I am actively looking for entry-level / graduate roles in AI & Machine Learning Engineering, Python Full-Stack Development, or Software Engineering (based in Bengaluru or remote).' },
+            { q: 'What is her core technology stack?', a: 'Python, FastAPI, Flask, Jinja2, SQL, HTML5, CSS3, and Tailwind CSS on the web side; Scikit-learn, XGBoost, Pandas, NumPy, SHAP/LIME, NLP, and GitHub Actions CI/CD on the ML/MLOps side.' },
+            { q: 'Tell me about DineFlow and the Student Management System.', a: 'DineFlow is a Smart Restaurant Ordering & Management System designed to streamline table ordering, menu management, and kitchen order tracking. The Student Management System is a full-stack CRUD portal for managing student profiles, enrollments, and academic records.' },
+            { q: 'How can I verify her code and credentials?', a: 'You can explore her repositories on GitHub (github.com/gayathri8105), view her LinkedIn profile, or open the interactive Resume viewer right from the top navigation bar.' }
+        ];
+
+        function fireConfetti() {
+            if (typeof confetti === 'function') confetti({ particleCount: 55, spread: 65, origin: { y: 0.7 }, colors: ['#1D4ED8', '#3B82F6', '#09090B', '#FFFFFF'] });
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.remove('hidden');
+            clearTimeout(window._toastTimer);
+            window._toastTimer = setTimeout(() => toast.classList.add('hidden'), 2600);
+        }
+
+        function copyText(text, label) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast(`${label} copied to clipboard`)).catch(() => fallbackCopy(text, label));
+            } else {
+                fallbackCopy(text, label);
+            }
+        }
+
+        function fallbackCopy(text, label) {
+            const ta = document.createElement('textarea');
+            ta.value = text;
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand('copy'); showToast(`${label} copied to clipboard`); } catch (e) { }
+            document.body.removeChild(ta);
+        }
+
+        function setProfilePhoto(src) {
+            const img = document.getElementById('profilePhotoImg');
+            const placeholder = document.getElementById('profilePhotoPlaceholder');
+            img.src = src;
+            img.classList.remove('hidden');
+            placeholder.classList.add('hidden');
+        }
+
+        function loadSavedPhoto() {
+            try {
+                const saved = localStorage.getItem('gayathri_portfolio_photo');
+                if (saved) setProfilePhoto(saved);
+            } catch (e) { }
+        }
+
+        function renderHeroTab(key) {
+            const data = HERO_TELEMETRY[key];
+            document.querySelectorAll('.hero-tab-btn').forEach(btn => {
+                const active = btn.dataset.heroTab === key;
+                btn.className = active
+                    ? 'hero-tab-btn px-2 py-1.5 rounded-lg text-xs font-medium bg-white text-royal-700 shadow-sm transition-all'
+                    : 'hero-tab-btn px-2 py-1.5 rounded-lg text-xs font-medium text-ink-600 hover:text-ink-950 transition-all';
+            });
+            document.getElementById('heroPanelBody').innerHTML = `
+        <div class="p-4 rounded-xl bg-ice border border-slate-200">
+          <div class="flex items-center justify-between gap-2">
+            <span class="text-[11px] font-mono uppercase text-royal-700 font-medium">${data.tag}</span>
+            <span class="text-[11px] font-mono text-ink-600">${data.metricLabel}</span>
+          </div>
+          <h3 class="font-semibold text-ink-950 text-base mt-1.5">${data.title}</h3>
+          <div class="text-xl font-mono font-semibold text-royal-700 mt-2">${data.metricValue}</div>
+          <p class="text-xs text-ink-600 mt-2 leading-relaxed">${data.summary}</p>
+          <div class="flex flex-wrap gap-1.5 mt-3">
+            ${data.stack.map(s => `<span class="text-[11px] font-mono px-2 py-0.5 rounded bg-white border border-slate-200 text-ink-600">${s}</span>`).join('')}
+          </div>
+        </div>
+      `;
+        }
+
+        function renderStackMarquees() {
+            const makeBadge = (item) => `<span class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-xs sm:text-sm font-medium text-ink-950 whitespace-nowrap">${item}</span>`;
+            document.getElementById('stackRow1').innerHTML = [...STACK_ROW_1, ...STACK_ROW_1].map(makeBadge).join('');
+            document.getElementById('stackRow2').innerHTML = [...STACK_ROW_2, ...STACK_ROW_2].map(makeBadge).join('');
+        }
+
+        function renderEcosystem(selectedId) {
+            const node = ECOSYSTEM_NODES.find(n => n.id === selectedId);
+            const grid = document.getElementById('ecosystemGrid');
+            grid.innerHTML = ECOSYSTEM_NODES.map(n => {
+                let cls = 'bg-ice border-slate-200 text-ink-950 hover:border-royal-600';
+                if (n.id === selectedId) cls = 'active';
+                else if (node.related.includes(n.id)) cls = 'connected';
+                return `
+          <button type="button" data-eco-id="${n.id}" class="ecosystem-node ${cls} p-3.5 rounded-xl border text-left transition-all">
+            <div class="text-xs font-semibold">${n.label}</div>
+            <div class="text-[10px] font-mono opacity-75 mt-1">${n.projects.length} project${n.projects.length > 1 ? 's' : ''}</div>
+          </button>
+        `;
+            }).join('');
+
+            document.getElementById('ecosystemDetail').innerHTML = `
+        <div class="text-xs font-mono uppercase tracking-wider text-royal-700 font-medium">${node.label}</div>
+        <p class="text-sm text-ink-600 mt-2 leading-relaxed">${node.desc}</p>
+        <div class="mt-4 pt-3 border-t border-slate-200">
+          <div class="text-[11px] font-mono uppercase text-ink-400 mb-1.5">Connected Projects</div>
+          <div class="flex flex-wrap gap-1.5">
+            ${node.projects.map(p => `<span class="text-xs px-2.5 py-1 rounded-md bg-royal-50 text-royal-800 font-medium">${p}</span>`).join('')}
+          </div>
+        </div>
+      `;
+
+            grid.querySelectorAll('[data-eco-id]').forEach(btn => {
+                btn.addEventListener('click', () => renderEcosystem(btn.dataset.ecoId));
+                btn.addEventListener('mouseenter', () => renderEcosystem(btn.dataset.ecoId));
+            });
+        }
+
+        function renderProjects(filter = 'all') {
+            const list = filter === 'all' ? PROJECTS : PROJECTS.filter(p => p.category === filter);
+            const grid = document.getElementById('projectsGrid');
+            grid.innerHTML = list.map(p => `
+        <article class="card-surface rounded-2xl p-6 flex flex-col justify-between cursor-pointer" data-project-id="${p.id}">
+          <div>
+            <div class="flex items-center justify-between gap-2 text-xs font-mono">
+              <span class="px-2.5 py-1 rounded-md bg-royal-50 text-royal-700 font-medium">${p.categoryLabel}</span>
+              <span class="text-ink-400">${p.year}</span>
+            </div>
+            <h3 class="text-lg font-semibold text-ink-950 mt-3 leading-snug">${p.title}</h3>
+            <p class="text-sm text-ink-600 mt-2 leading-relaxed">${p.summary}</p>
+          </div>
+          <div class="mt-5 pt-4 border-t border-slate-200">
+            <div class="text-xs font-mono text-royal-700 font-medium mb-2.5">${p.impact}</div>
+            <div class="flex flex-wrap gap-1.5 mb-4">
+              ${p.stack.slice(0, 4).map(s => `<span class="text-[11px] px-2 py-0.5 rounded bg-ice border border-slate-200 text-ink-600">${s}</span>`).join('')}
+            </div>
+            <span class="inline-flex items-center gap-1 text-xs font-semibold text-royal-700">
+              View case study <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </span>
+          </div>
+        </article>
+      `).join('');
+
+            grid.querySelectorAll('[data-project-id]').forEach(card => {
+                card.addEventListener('click', () => openProjectModal(card.dataset.projectId));
+            });
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function openProjectModal(id) {
+            const p = PROJECTS.find(x => x.id === id);
+            if (!p) return;
+            document.getElementById('modalCategory').textContent = `${p.categoryLabel} · ${p.year}`;
+            document.getElementById('modalBody').innerHTML = `
+        <h3 class="text-2xl font-semibold text-ink-950">${p.title}</h3>
+        <div class="inline-block text-xs font-mono px-3 py-1 rounded-lg bg-royal-50 text-royal-800 font-medium">${p.impact}</div>
+        <p class="text-sm text-ink-600 leading-relaxed">${p.summary}</p>
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-ink-400 mb-2">Key Engineering Highlights</h4>
+          <ul class="space-y-2 text-sm text-ink-600 list-disc list-inside">
+            ${p.highlights.map(h => `<li>${h}</li>`).join('')}
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-xs font-mono uppercase tracking-wider text-ink-400 mb-2">Tech Stack</h4>
+          <div class="flex flex-wrap gap-2">
+            ${p.stack.map(s => `<span class="text-xs font-mono px-2.5 py-1 rounded-md bg-mist text-ink-950">${s}</span>`).join('')}
+          </div>
+        </div>
+        <div class="pt-3 border-t border-slate-200 flex items-center justify-between">
+          <a href="https://github.com/gayathri8105" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-ink-950 hover:bg-royal-700 text-white text-xs font-medium transition-colors">
+            <i data-lucide="github" class="w-4 h-4"></i> View on GitHub
+          </a>
+          <a href="#contact" onclick="document.getElementById('projectModal').classList.add('hidden')" class="text-xs font-medium text-royal-700 hover:underline">Ask about this project →</a>
+        </div>
+      `;
+            document.getElementById('projectModal').classList.remove('hidden');
+            if (window.lucide) lucide.createIcons();
+        }
+
+        function renderFaq() {
+            const container = document.getElementById('faqList');
+            container.innerHTML = FAQS.map((item, idx) => `
+        <div class="card-surface rounded-xl overflow-hidden">
+          <button type="button" data-faq-idx="${idx}" class="w-full px-5 py-4 text-left flex items-center justify-between gap-4 font-medium text-sm sm:text-base text-ink-950">
+            <span>${item.q}</span>
+            <i data-lucide="chevron-down" class="w-4 h-4 text-ink-400 shrink-0 transition-transform"></i>
+          </button>
+          <div id="faqAns-${idx}" class="${idx === 0 ? '' : 'hidden'} px-5 pb-4 text-sm text-ink-600 leading-relaxed">
+            ${item.a}
+          </div>
+        </div>
+      `).join('');
+
+            container.querySelectorAll('[data-faq-idx]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const ans = document.getElementById(`faqAns-${btn.dataset.faqIdx}`);
+                    ans.classList.toggle('hidden');
+                });
+            });
+        }
+
+        const CMD_ITEMS = [
+            ...PROJECTS.map(p => ({ label: p.title, type: 'Project', action: () => openProjectModal(p.id) })),
+            { label: 'Capabilities & Tech Stack', type: 'Section', action: () => location.hash = '#capabilities' },
+            { label: 'Engineering Ecosystem Map', type: 'Section', action: () => location.hash = '#ecosystem' },
+            { label: 'Education & Certifications', type: 'Section', action: () => location.hash = '#credentials' },
+            { label: 'Open Resume Preview', type: 'Action', action: () => document.getElementById('resumeModal').classList.remove('hidden') },
+            { label: 'Toggle Black / White Theme', type: 'Vibe', action: () => document.getElementById('vibeToggleBtn').click() },
+            { label: 'Contact Gayathri', type: 'Section', action: () => location.hash = '#contact' }
+        ];
+
+        function renderCmdResults(query = '') {
+            const q = query.trim().toLowerCase();
+            const filtered = CMD_ITEMS.filter(i => i.label.toLowerCase().includes(q) || i.type.toLowerCase().includes(q));
+            const box = document.getElementById('cmdResults');
+            if (!filtered.length) {
+                box.innerHTML = `<div class="p-4 text-center text-xs text-ink-400">No matching items found.</div>`;
+                return;
+            }
+            box.innerHTML = filtered.map((item, i) => `
+        <button type="button" data-cmd-i="${i}" class="w-full px-3 py-2.5 rounded-xl hover:bg-mist flex items-center justify-between text-left text-sm text-ink-950">
+          <span>${item.label}</span>
+          <span class="text-[11px] font-mono text-royal-700">${item.type}</span>
+        </button>
+      `).join('');
+            box.querySelectorAll('[data-cmd-i]').forEach((btn, idx) => {
+                btn.addEventListener('click', () => {
+                    document.getElementById('cmdModal').classList.add('hidden');
+                    filtered[idx].action();
+                });
+            });
+        }
+
+        function replyAi(text) {
+            const q = text.toLowerCase();
+            if (q.includes('dineflow') || q.includes('restaurant')) {
+                return '<strong>DineFlow</strong> is a Smart Restaurant Ordering &amp; Management System built with Python (FastAPI/Flask), SQL, HTML5, and Tailwind CSS — streamlining table ordering, menu updates, and kitchen order queues.';
+            }
+            if (q.includes('student')) {
+                return 'The <strong>Student Management System</strong> is a full-stack CRUD web application built with Python, SQL, Jinja2, and OOP principles to manage student profiles, enrollments, and academic records.';
+            }
+            if (q.includes('ml') || q.includes('crop') || q.includes('fraud') || q.includes('nlp')) {
+                return 'Gayathri’s ML &amp; MLOps portfolio includes: <strong>Crop Suitability &amp; Yield AI</strong> (+20% reliability via stacking + SHAP/LIME), <strong>Credit Card Fraud Detection</strong> (92% accuracy on 280K+ txns), <strong>MLOps CI/CD</strong> (-40% overhead), and <strong>Twitter Sentiment NLP</strong> (85% accuracy on 50K+ tweets).';
+            }
+            if (q.includes('contact') || q.includes('education') || q.includes('resume') || q.includes('email')) {
+                return 'She graduated in 2026 with a B.Tech in CSE (AI &amp; ML) from Dayananda Sagar University (CGPA: 7.63) and is training in Python Full-Stack at Innomatics Research Labs. Reach her at <strong>gayathriganiga68@gmail.com</strong> or <strong>+91 8105817096</strong>.';
+            }
+            return 'Gayathri is an AI/ML Engineer &amp; Python Full-Stack Developer based in Bengaluru. Try asking about <strong>DineFlow</strong>, <strong>Student Management</strong>, <strong>ML Projects</strong>, or <strong>Contact</strong>!';
+        }
+
+        function sendAiMessage(text) {
+            const clean = text.trim();
+            if (!clean) return;
+            const log = document.getElementById('aiMessages');
+            log.innerHTML += `<div class="ml-auto max-w-[85%] bg-royal-700 text-white rounded-xl p-3 text-xs sm:text-sm">${clean}</div>`;
+            const ans = replyAi(clean);
+            log.innerHTML += `<div class="bg-white border border-slate-200 rounded-xl p-3 text-xs sm:text-sm text-ink-950">${ans}</div>`;
+            log.scrollTop = log.scrollHeight;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderHeroTab('dineflow');
+            renderStackMarquees();
+            renderEcosystem('ml');
+            renderProjects('all');
+            renderFaq();
+            renderCmdResults('');
+            loadSavedPhoto();
+            if (window.lucide) lucide.createIcons();
+
+            const photoInput = document.getElementById('photoFileInput');
+            const triggerPhotoPick = () => photoInput.click();
+            document.getElementById('profilePhotoBox').addEventListener('click', triggerPhotoPick);
+            document.getElementById('uploadPhotoBtn').addEventListener('click', triggerPhotoPick);
+            photoInput.addEventListener('change', (e) => {
+                const file = e.target.files && e.target.files[0];
+                if (!file) return;
+                const reader = new FileReader();
+                reader.onload = (ev) => {
+                    setProfilePhoto(ev.target.result);
+                    try { localStorage.setItem('gayathri_portfolio_photo', ev.target.result); } catch (err) { }
+                    fireConfetti();
+                    showToast('Looking great! Profile photo updated.');
+                };
+                reader.readAsDataURL(file);
+            });
+
+            document.getElementById('vibeToggleBtn').addEventListener('click', () => {
+                const isDark = document.body.classList.toggle('dark-vibe');
+                document.getElementById('vibeLabel').textContent = isDark ? 'White Mode' : 'Black Mode';
+                showToast(isDark ? 'Switched to Midnight Black & Royal Blue' : 'Switched to White & Royal Blue');
+            });
+
+            let kudos = 26;
+            document.getElementById('kudosBtn').addEventListener('click', () => {
+                kudos += 1;
+                document.getElementById('kudosCount').textContent = kudos;
+                fireConfetti();
+                showToast('Thanks for the vibe check! ⚡');
+            });
+
+            document.querySelectorAll('.hero-tab-btn').forEach(btn => {
+                btn.addEventListener('click', () => renderHeroTab(btn.dataset.heroTab));
+            });
+
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.filter-btn').forEach(b => {
+                        b.className = 'filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-white border border-slate-300 text-ink-600 hover:border-royal-600 transition-colors';
+                    });
+                    btn.className = 'filter-btn px-3.5 py-1.5 rounded-full text-xs font-medium bg-royal-700 text-white transition-colors';
+                    renderProjects(btn.dataset.filter);
+                });
+            });
+
+            document.getElementById('closeProjectModal').addEventListener('click', () => document.getElementById('projectModal').classList.add('hidden'));
+            document.getElementById('openResumeBtn').addEventListener('click', () => document.getElementById('resumeModal').classList.remove('hidden'));
+            document.getElementById('closeResumeModal').addEventListener('click', () => document.getElementById('resumeModal').classList.add('hidden'));
+
+            const cmdModal = document.getElementById('cmdModal');
+            const cmdInput = document.getElementById('cmdInput');
+            document.getElementById('openCmdBtn').addEventListener('click', () => {
+                cmdModal.classList.remove('hidden');
+                cmdInput.value = '';
+                renderCmdResults('');
+                cmdInput.focus();
+            });
+            document.getElementById('cmdCloseBtn').addEventListener('click', () => cmdModal.classList.add('hidden'));
+            cmdInput.addEventListener('input', (e) => renderCmdResults(e.target.value));
+            document.addEventListener('keydown', (e) => {
+                if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+                    e.preventDefault();
+                    cmdModal.classList.toggle('hidden');
+                    if (!cmdModal.classList.contains('hidden')) {
+                        cmdInput.value = '';
+                        renderCmdResults('');
+                        cmdInput.focus();
+                    }
+                }
+                if (e.key === 'Escape') {
+                    cmdModal.classList.add('hidden');
+                    document.getElementById('projectModal').classList.add('hidden');
+                    document.getElementById('resumeModal').classList.add('hidden');
+                }
+            });
+
+            const aiDrawer = document.getElementById('aiDrawer');
+            document.getElementById('aiToggleBtn').addEventListener('click', () => aiDrawer.classList.toggle('hidden'));
+            document.getElementById('heroAskAiBtn').addEventListener('click', () => aiDrawer.classList.remove('hidden'));
+            document.getElementById('aiCloseBtn').addEventListener('click', () => aiDrawer.classList.add('hidden'));
+            document.querySelectorAll('.ai-chip').forEach(c => c.addEventListener('click', () => sendAiMessage(c.dataset.aiPrompt)));
+            document.getElementById('aiForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const inp = document.getElementById('aiInput');
+                sendAiMessage(inp.value);
+                inp.value = '';
+            });
+
+            document.getElementById('copyEmailBtn').addEventListener('click', () => copyText('gayathriganiga68@gmail.com', 'Email'));
+            document.getElementById('copyPhoneBtn').addEventListener('click', () => copyText('+91 8105817096', 'Phone'));
+            document.getElementById('contactForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const name = document.getElementById('contactName').value.trim();
+                fireConfetti();
+                showToast(`Thanks ${name || 'there'}! Message prepared for Gayathri.`);
+                e.target.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>
